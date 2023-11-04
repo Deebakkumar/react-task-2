@@ -1,25 +1,62 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+
+  const data = [
+    {
+      name :"apple",
+      details:"fruits",
+      clr:"whitesmoke",
+    },
+    {
+      name :"carrot",
+      details:"vegetables",
+      clr:"brown",
+    },
+    {
+      name :"chocolate",
+      details:"junk",
+      clr:"green",
+    }
+  ]
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {data.map((item, idx)=>( 
+        <SampleCard 
+        key={idx}
+        name={item.name}
+         details={item.details}
+          clr={item.clr} /> 
+          ))}
+
+
     </div>
   );
 }
 
 export default App;
+
+function SampleCard (props) {
+
+ const [show, setShow] = useState(false); 
+
+  const handleClick = () =>{
+   setShow(!show)
+  }
+
+  const describeStyle = { 
+    display : show ? "black" :"none" ,
+
+  }
+
+
+  return (
+    <div style={{backgroundColor:props.clr}}className='card-content'>
+      <p>Card name : {props.name}</p>
+      <p style={describeStyle}>Card Details: {props.details}</p>
+      <button style={{color : show ? "red" : "white"}} onClick={()=>{handleClick()}} >{!show ? "hide" :"show"}</button>
+    </div> 
+  )
+}
