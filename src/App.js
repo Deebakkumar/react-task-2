@@ -21,6 +21,10 @@ function App() {
       clr:"green",
     }
   ]
+
+// let state = "sanjayn"
+// state = "sethu"
+
   return (
     <div className="App">
         {data.map((item, idx)=>( 
@@ -47,7 +51,7 @@ function SampleCard (props) {
   }
 
   const describeStyle = { 
-    display : show ? "black" :"none" ,
+    display : show ? "block" :"none" ,
 
   }
 
@@ -55,8 +59,9 @@ function SampleCard (props) {
   return (
     <div style={{backgroundColor:props.clr}}className='card-content'>
       <p>Card name : {props.name}</p>
+
       <p style={describeStyle}>Card Details: {props.details}</p>
-      <button style={{color : show ? "red" : "white"}} onClick={()=>{handleClick()}} >{!show ? "hide" :"show"}</button>
+      <button style={{color : show ? "red" : "white"}} onClick={()=>{handleClick()}} >{!show ? "show" : "hide"}</button>
     </div> 
   )
 }
